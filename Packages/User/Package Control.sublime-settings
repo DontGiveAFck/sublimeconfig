@@ -1,0 +1,22 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"ayu",
+		"Babel",
+		"Babel Snippets",
+		"Cobalt2 Flat Theme",
+		"Emmet",
+		"New Moon Color Scheme",
+		"Package Control",
+		"SublimeLinter",
+		"SublimeLinter-eslint",
+		"Theme - Afterglow",
+		"Theme - Cobalt2",
+		"Wolf Theme"
+	]
+}

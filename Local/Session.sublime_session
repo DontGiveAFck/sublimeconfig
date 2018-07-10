@@ -1,0 +1,937 @@
+{
+	"folder_history":
+	[
+		"/home/arsen/Documents/game-arena/frontend"
+	],
+	"last_version": 3176,
+	"last_window_id": 11,
+	"log_indexing": false,
+	"settings":
+	{
+		"new_window_height": 0.0,
+		"new_window_settings":
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"si",
+						"signin"
+					],
+					[
+						"rx",
+						"redux-thunk"
+					],
+					[
+						"rcc",
+						"rcc\tReact: legacy component"
+					],
+					[
+						"for",
+						"from"
+					],
+					[
+						"reac",
+						"react-redux"
+					]
+				]
+			},
+			"build_system_choices":
+			[
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+					[
+						"pace",
+						"Package Control: Install Package"
+					],
+					[
+						"packa",
+						"Package Control: Install Package"
+					],
+					[
+						"theme",
+						"UI: Select Color Scheme"
+					],
+					[
+						"install ",
+						"Package Control: Install Package"
+					],
+					[
+						"Pa",
+						"Package Control: Install Package"
+					],
+					[
+						"Theme",
+						"UI: Select Theme"
+					],
+					[
+						"Package Control: in",
+						"Package Control: Install Package"
+					],
+					[
+						"Packa",
+						"Package Control: Add Channel"
+					]
+				],
+				"width": 0.0
+			},
+			"console":
+			{
+				"height": 172.0,
+				"history":
+				[
+					"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+			],
+			"find":
+			{
+				"height": 41.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"user",
+					"})",
+					"user",
+					"})",
+					"({\n"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+					""
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"incremental_find":
+			{
+				"height": 28.0
+			},
+			"input":
+			{
+				"height": 46.0
+			},
+			"menu_visible": true,
+			"output.SublimeLinter":
+			{
+				"height": 0.0
+			},
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "",
+			"replace":
+			{
+				"height": 52.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": true,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			}
+		},
+		"new_window_width": 0.0
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+					[
+						"si",
+						"signin"
+					],
+					[
+						"rx",
+						"redux-thunk"
+					],
+					[
+						"rcc",
+						"rcc\tReact: legacy component"
+					],
+					[
+						"for",
+						"from"
+					],
+					[
+						"reac",
+						"react-redux"
+					]
+				]
+			},
+			"buffers":
+			[
+				{
+					"contents": "import React from 'react';\nimport ReactDOM from 'react-dom';\nimport App from './App';\nimport {BrowserRouter, Route} from 'react-router-dom'\nimport 'semantic-ui-css/semantic.min.css'\nimport { createStore, applyMiddleware } from 'redux'\nimport { Provider } from 'react-redux'\nimport thunk from 'redux-thunk'\nimport { composeWithDevTools } from 'redux-devtools-extension'\nimport registerServiceWorker from './registerServiceWorker'\nimport rootReducer from './rootReducer'\nimport { userLoggedIn } from './actions/auth'\nimport { Cookies } from 'react-cookie'\n\nconst cookies = new Cookies()\n\nconst store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))\n\nlet token\nif (token = cookies.get('token')) {\n    const user = {\n        token: token\n    }\n    store.dispatch(userLoggedIn(user))\n}\n\nReactDOM.render(\n    <BrowserRouter>\n        <Provider store={store}>\n            <Route component={App} />\n        </Provider>\n    </BrowserRouter>,\n    document.getElementById('root'));\nregisterServiceWorker();\n",
+					"file": "/home/arsen/Documents/game-arena/frontend/src/index.js",
+					"file_size": 1033,
+					"file_write_time": 131757103805271510,
+					"settings":
+					{
+						"buffer_size": 1018,
+						"encoding": "UTF-8",
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"contents": "import axios from 'axios'\n\nexport default {\n    user: {\n        login: (credentials) =>\n            axios.post('/signin', {\n                login: credentials.login,\n                password: credentials.password })\n                .then(res => res.data),\n\n        signup: (data) =>\n            axios.post('/signup', {\n                login: data.login,\n                password: data.password,\n                email: data.email,\n                username: data.username })\n                .then(res => res.data)\n    }\n}",
+					"file": "/home/arsen/Documents/game-arena/frontend/src/api.js",
+					"file_size": 519,
+					"file_write_time": 131756783729272723,
+					"settings":
+					{
+						"buffer_size": 519,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"contents": "import { combineReducers } from 'redux'\nimport user from './reducers/user'\n\nexport default combineReducers({\n    user\n})\n\n\n",
+					"file": "/home/arsen/Documents/game-arena/frontend/src/rootReducer.js",
+					"file_size": 120,
+					"file_write_time": 131756482249419748,
+					"settings":
+					{
+						"buffer_size": 123,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"contents": "// In production, we register a service worker to serve assets from local cache.\n\n// This lets the app load faster on subsequent visits in production, and gives\n// it offline capabilities. However, it also means that developers (and users)\n// will only see deployed updates on the \"N+1\" visit to a page, since previously\n// cached resources are updated in the background.\n\n// To learn more about the benefits of this model, read https://goo.gl/KwvDNy.\n// This link also includes instructions on opting out of this behavior.\n\nconst isLocalhost = Boolean(\n    window.location.hostname === 'localhost' ||\n        // [::1] is the IPv6 localhost address.\n        window.location.hostname === '[::1]' ||\n        // 127.0.0.1/8 is considered localhost for IPv4.\n        window.location.hostname.match(\n            /^127(?:\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/\n        )\n);\n\nexport default function register() {\n    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {\n        // The URL constructor is available in all browsers that support SW.\n        const publicUrl = new URL(process.env.PUBLIC_URL, window.location);\n        if (publicUrl.origin !== window.location.origin) {\n            // Our service worker won't work if PUBLIC_URL is on a different origin\n            // from what our page is served on. This might happen if a CDN is used to\n            // serve assets; see https://github.com/facebookincubator/create-react-app/issues/2374\n            return;\n        }\n\n        window.addEventListener('load', () => {\n            const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;\n\n            if (isLocalhost) {\n                // This is running on localhost. Lets check if a service worker still exists or not.\n                checkValidServiceWorker(swUrl);\n\n                // Add some additional logging to localhost, pointing developers to the\n                // service worker/PWA documentation.\n                navigator.serviceWorker.ready.then(() => {\n                    console.log(\n                        'This web app is being served cache-first by a service ' +\n                            'worker. To learn more, visit https://goo.gl/SC7cgQ'\n                    );\n                });\n            } else {\n                // Is not local host. Just register service worker\n                registerValidSW(swUrl);\n            }\n        });\n    }\n}\n\nfunction registerValidSW(swUrl) {\n    navigator.serviceWorker\n        .register(swUrl)\n        .then(registration => {\n            registration.onupdatefound = () => {\n                const installingWorker = registration.installing;\n                installingWorker.onstatechange = () => {\n                    if (installingWorker.state === 'installed') {\n                        if (navigator.serviceWorker.controller) {\n                            // At this point, the old content will have been purged and\n                            // the fresh content will have been added to the cache.\n                            // It's the perfect time to display a \"New content is\n                            // available; please refresh.\" message in your web app.\n                            console.log('New content is available; please refresh.');\n                        } else {\n                            // At this point, everything has been precached.\n                            // It's the perfect time to display a\n                            // \"Content is cached for offline use.\" message.\n                            console.log('Content is cached for offline use.');\n                        }\n                    }\n                };\n            };\n        })\n        .catch(error => {\n            console.error('Error during service worker registration:', error);\n        });\n}\n\nfunction checkValidServiceWorker(swUrl) {\n    // Check if the service worker can be found. If it can't reload the page.\n    fetch(swUrl)\n        .then(response => {\n            // Ensure service worker exists, and that we really are getting a JS file.\n            if (\n                response.status === 404 ||\n                response.headers.get('content-type').indexOf('javascript') === -1\n            ) {\n                // No service worker found. Probably a different app. Reload the page.\n                navigator.serviceWorker.ready.then(registration => {\n                    registration.unregister().then(() => {\n                        window.location.reload();\n                    });\n                });\n            } else {\n                // Service worker found. Proceed as normal.\n                registerValidSW(swUrl);\n            }\n        })\n        .catch(() => {\n            console.log(\n                'No internet connection found. App is running in offline mode.'\n            );\n        });\n}\n\nexport function unregister() {\n    if ('serviceWorker' in navigator) {\n        navigator.serviceWorker.ready.then(registration => {\n            registration.unregister();\n        });\n    }\n}\n",
+					"file": "/home/arsen/Documents/game-arena/frontend/src/registerServiceWorker.js",
+					"file_size": 4384,
+					"file_write_time": 131756482249419748,
+					"settings":
+					{
+						"buffer_size": 5020,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/home/arsen/Documents/game-arena/frontend/src/types.js",
+					"settings":
+					{
+						"buffer_size": 142,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"contents": "import React from 'react'\nimport {Route} from 'react-router-dom'\nimport HomePage from './components/pages/HomePage'\nimport LoginPage from './components/pages/LoginPage'\nimport ProfilePage from './components/pages/ProfilePage'\nimport SignupPage from './components/pages/SignupPage'\nimport UserRoute from './components/routes/UserRoute'\nimport GuestRoute from './components/routes/GuestRoute'\n\nconst App = ({ location }) => {\n    return (\n        <div className='ui container'>\n            <Route location={location} path='/' exact component={HomePage}/>\n            <GuestRoute location={location} path='/login' exact component={LoginPage}/>\n            <GuestRoute location={location} path='/signup' exact component={SignupPage}/>\n            <UserRoute location={location} path='/profile' exact component={ProfilePage}/>\n        </div>\n    )\n}\n\nexport default App;\n",
+					"file": "/home/arsen/Documents/game-arena/frontend/src/App.js",
+					"file_size": 864,
+					"file_write_time": 131756482249379747,
+					"settings":
+					{
+						"buffer_size": 866,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"contents": "Package Control Messages\n========================\n\nayu\n---\n\n  **ayu theme for Sublime Text**\n  To learn more about ayu visit https://github.com/dempfi/ayu\n  ===============================================================================\n  \n  Activate ayu\n  \n  Open command palette via `Tools > Command Palette` (or CMD/CTRL + SHIFT + p)\n  and type `ayu: Activate theme`.\n  \n                                    ===\n  \n  You can also manually activate this theme by adding these lines to your user\n  settings (Preferences > Settings - User):\n  \n  Light:\n  ```json\n  \"theme\": \"ayu-light.sublime-theme\",\n  \"color_scheme\": \"Packages/ayu/ayu-light.tmTheme\",\n  ```\n  \n  Mirage:\n  ```json\n  \"theme\": \"ayu-mirage.sublime-theme\",\n  \"color_scheme\": \"Packages/ayu/ayu-mirage.tmTheme\",\n  ```\n  \n  Dark:\n  ```json\n  \"theme\": \"ayu-dark.sublime-theme\",\n  \"color_scheme\": \"Packages/ayu/ayu-dark.tmTheme\",\n  ```\n  \n  ================================================================================\n  \n  Ayu provides following options to customize the theme\n  \n  ```json\n  \"ui_separator\":             true, // separators between panels\n  \"ui_font_size_small\":       true, // smaller UI font size(sidebar, statusbar etc)\n  \"ui_big_tabs\":              true, // increased tab height\n  \"ui_fix_tab_labels\":        true, // to fix tab labels if they look not right\n  \"ui_font_source_code_pro\":  true, // use [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro) for UI\n  \"ui_font_default\":          true, // use Sublime Text's default UI font\n  \"ui_wide_scrollbars\":       true, // wider scrollbars\n  ```\n\n\nEmmet\n-----\n\n  Thank you for installing Emmet -- a toolkit that can greatly improve your workflow. Note that this plugin automatically downloads and installs PyV8 binary (see status bar message). \n  \n  ******************************\n  Please restart editor \n  to finish installation process \n  after PyV8 was downloaded.\n  ******************************\n  \n  Tab key handler\n  ==========================\n  \n  By default, Emmet allows you to expand abbreviations with Tab key in HTML, XML, HAML and CSS/SASS/LESS/Stylus documents. As a side effect, you can’t use some of your ST2 snippets.\n  \n  Please read https://github.com/sergeche/emmet-sublime#tab-key-handler about how Tab handler works and how to tweak its behavior to match your needs.\n  \n  Enter key\n  ==========================\n  \n  In HTML and XML documents, Emmet overrides Enter key to insert formatted line breaks between opening and closing tags. In some cases it will break character input (for example, in Japanese language).\n  \n  To disable Enter key handler, simply add the following option in your user's Preferences file:\n  \n  \"disable_formatted_linebreak\": true\n  \n  Actions shortcuts\n  ==========================\n  \n  Emmet has a number of actions with keyboard shortcuts that may override ones you're using commonly (for example, Ctrl-E or Ctrl-Down). Please read the project main page to get list of available actions and keyboard shortcuts and how to disable them:\n  https://github.com/sergeche/emmet-sublime\n  \n  Documentation and examples:\n  http://emmet.io\n  \n  ------------------------------\n  Follow me on Twitter: @emmetio\n  ------------------------------\n\n\nSublimeLinter\n-------------\n\n  \n    ____        _     _ _                _     _       _\n   / ___| _   _| |__ | (_)_ __ ___   ___| |   (_)_ __ | |_ ___ _ __\n   \\___ \\| | | | '_ \\| | | '_ ` _ \\ / _ \\ |   | | '_ \\| __/ _ \\ '__|\n    ___) | |_| | |_) | | | | | | | |  __/ |___| | | | | ||  __/ |\n   |____/ \\__,_|_.__/|_|_|_| |_| |_|\\___|_____|_|_| |_|\\__\\___|_|\n  \n  \n  Welcome to SublimeLinter, a linter framework for Sublime Text 3.\n  Linters are not included, they must be installed separately.\n  \n  \n  For complete documentation on how to use and configure SublimeLinter,\n  please see: http://www.sublimelinter.com\n  \n  To report issues: https://github.com/SublimeLinter/SublimeLinter\n\n\nSublimeLinter-eslint\n--------------------\n\n  SublimeLinter-eslint\n  -------------------------------\n  This linter plugin for SublimeLinter provides an interface to ESLint.\n  \n  Please read the installation instructions at:\n  \n  https://github.com/roadhump/SublimeLinter-eslint\n",
+					"settings":
+					{
+						"buffer_size": 4201,
+						"line_ending": "Unix",
+						"name": "Package Control Messages",
+						"read_only": true,
+						"scratch": true
+					}
+				}
+			],
+			"build_system": "",
+			"build_system_choices":
+			[
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+					[
+						"pace",
+						"Package Control: Install Package"
+					],
+					[
+						"packa",
+						"Package Control: Install Package"
+					],
+					[
+						"theme",
+						"UI: Select Color Scheme"
+					],
+					[
+						"install ",
+						"Package Control: Install Package"
+					],
+					[
+						"Pa",
+						"Package Control: Install Package"
+					],
+					[
+						"Theme",
+						"UI: Select Theme"
+					],
+					[
+						"Package Control: in",
+						"Package Control: Install Package"
+					],
+					[
+						"Packa",
+						"Package Control: Add Channel"
+					]
+				],
+				"width": 0.0
+			},
+			"console":
+			{
+				"height": 172.0,
+				"history":
+				[
+					"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"expanded_folders":
+			[
+				"/home/arsen/Documents/game-arena/frontend",
+				"/home/arsen/Documents/game-arena/frontend/src",
+				"/home/arsen/Documents/game-arena/frontend/src/components",
+				"/home/arsen/Documents/game-arena/frontend/src/components/routes"
+			],
+			"file_history":
+			[
+			],
+			"find":
+			{
+				"height": 41.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"user",
+					"})",
+					"user",
+					"})",
+					"({\n"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+					""
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"folders":
+			[
+				{
+					"path": "/home/arsen/Documents/game-arena/frontend"
+				}
+			],
+			"groups":
+			[
+				{
+					"selected": 5,
+					"sheets":
+					[
+						{
+							"buffer": 0,
+							"file": "/home/arsen/Documents/game-arena/frontend/src/index.js",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1018,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										584,
+										584
+									]
+								],
+								"settings":
+								{
+									"SL.13.region_keys":
+									[
+										"SL.eslint.Highlights.|e16f3aa718f3b9836a980dcb2b9cec5e4f02e35876ff80f9561c638b78f2b9d7|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Gutter.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|dot",
+										"SL.eslint.Highlights.|f873707cd579e7365e561b305e7f51fefa6a5435dcf87127a47b272d8482c3fb|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|735fb2b13de003af06256c549d5c443ef3f6f4c06ae25d66ec0ea23cfe40ad2f|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|f3468e369837f6c5358c5f43ae47000354e534367976e3adc82ac3904115c0f7|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|932b34cd90eebdc01e574f09230c1cf83d679e0342cb3c257ce7e3f9fedb435d|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|c95e88546ec5e5d635a5977de00e685a798040c93e1d2ea85b4efda09aa9c91a|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"sublime_linter.protected_regions",
+										"SL.eslint.Highlights.|7ec46314156be20fc7836d7bcb2f09dae1caa4b530d4f2e565d76efad4febeb2|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|7cf600a97969ae446b0c69398655089502a0f08a4a4d443790f40b0bdb71f7ba|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|f4c2eaa17158a782f27330d05e4924ac9920e72da520d34cc34890e925017977|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|c9b0dce934ff621bc7fa67b8fc4f913490b3745e55c25b35c4be571bfd61f146|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|d27d968edbb8f7a9476c5600abcf2dd2f635d093d7537b0a1cf9a6d87bc7cea0|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|e25ad9de0095610d739582366eef79498a9180e2050a29c81fae94a5a82e3f68|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|2361609bf2dce976bd392017f3499d09c9ea15c7c13908bbf787755a73d9c638|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|e41a995b1913ca00c930f5fec132438671e08187c2b94e9f097332eeb2cd400e|region.redish markup.deleted.sublime_linter markup.error.sublime_linter|32",
+										"SL.eslint.Highlights.|03d7aeeba9fb8b997174a4ba5e92c260a8044e61c7bff0eea4397835793a4c8c|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|38cc233151fba027c342efe6a3f8d0635684dd92493ef019dfbd7043fcec7312|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|1567ff2f691e0cb31a8ab8ffe2b90275bca1506cbdf9abd3494826b290cceb87|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Gutter.|region.redish markup.deleted.sublime_linter markup.error.sublime_linter|dot",
+										"SL.eslint.Highlights.|9a7fb9e8996ed072e6938bb4b5e5aa3d586bb7f2f888d9bea7abce281cfcfd1d|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32"
+									],
+									"SL.27.region_keys":
+									[
+									],
+									"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 2,
+							"type": "text"
+						},
+						{
+							"buffer": 1,
+							"file": "/home/arsen/Documents/game-arena/frontend/src/api.js",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 519,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										517,
+										517
+									]
+								],
+								"settings":
+								{
+									"SL.133.region_keys":
+									[
+									],
+									"SL.14.region_keys":
+									[
+										"SL.eslint.Highlights.|debb69e594275044db722d74b52180a6f103c0521d5a3d8d4f640aeb4ba3f228|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Gutter.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|dot",
+										"SL.eslint.Highlights.|e233cb18234878a05f75cefa072fa72e47d5401ab19d4f589f75b1143fd91cc7|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"sublime_linter.protected_regions",
+										"SL.eslint.Highlights.|d0119ed9d7fca0dc49c21a2f4955b610c7a6269f15499cdc515e9167413ef6cf|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|f16e3f84cb54fd814e79e5bd18517c019f6dc03369c50945e4e8c0d92cc156f1|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|50c88fe7e2ec9ad0aeedba8ed3dd53f087819dd411c89d969d58a96e594a2b2d|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|b4c68f98547d18bdfdf2d35e28c34e70c7d1058afa7212c6f25c9606e9aefad8|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|cd3f549e4655fc959e52e9f731a66f8679be599a5549f6b7f2c9d5c2d279fc39|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|28ee0b651f7cedf2a4cd6db15f312f06837e2b3bc881646bb2c2982f94cccca1|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|0ce459e824f78901ed928f4ac6b839be74260262db16a0678b112d28b5249840|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|016b604b4fc3bd1ffda8cbb296e5b03db399a2aa65628814d80427d0d2153cb9|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|7cb14da2b7a33508e203dfa659a877903aa956d696c2959ec231b79f458220f5|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|d94ca63a5d06552c362b3321f3304ec673b258c63a41395b4eb5087860cda6eb|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|e33cb6e15ac40082d9f412cd3d80b47a655ea5c68fc987a1c4b5867205633b60|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|f31b7c5c3f81111bb0660ce24db0a66fe1084af3469f941d32f89ebbbeb1e125|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|665d6ad8c5274c246b8e9fe7e9fe967200815236e26cceb8f8bd709689fc2527|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32"
+									],
+									"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 1,
+							"type": "text"
+						},
+						{
+							"buffer": 2,
+							"file": "/home/arsen/Documents/game-arena/frontend/src/rootReducer.js",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 123,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										121,
+										121
+									]
+								],
+								"settings":
+								{
+									"SL.15.region_keys":
+									[
+										"sublime_linter.protected_regions",
+										"SL.eslint.Highlights.|d8762155bf4f05498e075885a1fbefc9edd0a46eed5524933b2b2d9563dbbed0|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Gutter.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|dot"
+									],
+									"SL.30.region_keys":
+									[
+									],
+									"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 4,
+							"type": "text"
+						},
+						{
+							"buffer": 3,
+							"file": "/home/arsen/Documents/game-arena/frontend/src/registerServiceWorker.js",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 5020,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										873,
+										873
+									]
+								],
+								"settings":
+								{
+									"SL.16.region_keys":
+									[
+										"SL.eslint.Highlights.|5f099649c373b9deecfa82c1ed802c5865e5896c36473fa61151447cc885ed24|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|ea5d916a1dd7c162a53f9502b2c26462fa2ab0c2ed389811a9815ce346849223|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|952c693b618280d55ff1314151b2b7f63644ab7f154b9b3258b21e701749a7a3|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|a342f1aa9b2912bdec5d41fa1b5551f5025b4d96d05d3f27201fac960ce692b3|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|e359e4f911c4b754b8f08c6f42bdf563c3192e2342f1ebfcf4aad6ea79769684|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|4659d0023fce36445b42e25c10b2db5407b500db3e4d1265606bd863384a0904|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|22732a29fa353e0c6d998ae626547f51c31169716d585c3bff12e06d01e90d38|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|258e441d89dfe6cc973367e68da72c3db16cb9dabcae5d84c3e1bb3d757d680c|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"sublime_linter.protected_regions",
+										"SL.eslint.Highlights.|f4eba2b28dcc52b7f80fa2cc497d883069d78084a55f655ea5d962fe9407301d|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|2fb627fb5132f9b550125f0b95c5379275373692c19b853ba9cc9aa9721da661|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|9cfc42a959cd4bb462a90a747b76457ce7ae305174097ae8b580457de09f3075|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|b2813389221bcce7204866a2a1915fcac99e2ac100df8d41e80f5edaaf028c9d|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|435dfc08c1be3510f0b122b72372bfb5d0ee04b9b458e11d73d436e36549c27c|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|396737aaf54821fc2f60499a460c465ad4bc41998e0645f61d1bba85b77b0c31|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|69552a156afb5f0aa445d8217ceff32c83dafe0f677856648a1b2a09a583c92a|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|843fcedb1843005840c1223968179a9cc6b8a4454d8471b0c60395124cfc6c20|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|06d5f9497498a6f8d47d4556284a9a521815c6fff761300766830ab14de342cc|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|7551eb6b209c40eef045f2d0ff4f03f5ff55e7f6625871c3a98aac48a42b1491|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|3e9ea343b918b0e889950b7dd55c71811ca346d3873d1bdca9bb5e6ea068f750|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|795da2bcf5260e2f8ea251650f6b845d470d0eb0d89dea687bfc587a7c99424f|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|262e3173761c2a50e69a154843a0054c5f9e934ce297608d6542d1a872e2e660|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|f882a124c65d313e730d4a841de48591d8a66952886f246c2621148978905c57|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|069b77c09f8014d2347d5d10c42c1c80dca4a0c8ccfce266b3f8c61719861728|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|faa8f04be5ed0edd131d4af7688fe73d2eab7bf5b8f7879507147543e81d0eee|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|93b5b535d25070e1d07d9b48da9c0d91fbda58c3ee7887e38935104c75b347c1|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|34ab4d5951861d1a5b545b80e7c9959a40d0182bc1f34efb1fc0c6a41c8c192f|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|865b3637888bfb0a877021e01c34873cd94a38bd2f37faf086fa6389af663a6b|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|1f945298e93b932f1c15cdbd3b0d41b33e543a48e9ec7615237bcb30594eb982|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|e75d1e28e8ff80d3cd606ea3a111cc049f1d4dc3501bea1e7c0403a1dcdd1248|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|929e4755271f71d36d82d8f8a6df628310f70636f1eb22bf6ec5cb6c66213940|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|b4d0fca4c0a38a8afc6db21ce941c12ba3e3bdcf576cf131e54a0817b47b3a91|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|f693d7da08c34adbd9c15f97eb03b08e649f4284effebca06285b58882a9d246|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|96cb67fc4e08d549ae69c8acdb526a0d7331f22c666d65ee3ffacb222761c191|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|77354427a6c534716c53b435f5567852ee6773abc4dca5212582dd832a1e4527|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|4b8a20a56b907c6e224e6679f5c54fce61960f171555fde5d691e711df74afb6|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|58b405ec20e0a6a9d52e7dae83510e5d6bd052625cd14a3ee1d7d9ddb38a3d75|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|17944116f2ffb700499f6558e2feed7a954e34f14697bb0bd134029ba9f2782c|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|45f218268882f2c5c84c35b512880dce146ec42cdde31ee0eee936fd31c1f07a|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|51256e99badf3901c02c33f2cd8ce0815efd5d51dc6f802925268915fac7c41a|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|4864bb4324c6217102bba672fab15f375f384f97c7ae74778957e308e5e8d80b|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|b9da264d18f8cb6a91967674129df9d0047ce2f2015632a55d74059709c34ef0|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|4b6de1d9a90946e3a1ce0de72282460ce797f03c1981a8f0215e41cdc45ced18|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|d05c2704131de1178f40e2b74f46a24a0d95429cd37726add37cb50496ac07f3|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|52de8ba638ae164b7d9874631696d7066ab9f1768115e849922bcb3d727dfb4d|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|3d6ae04d0203b0460c8eae0a84823a737c19e1b385f41c4b7e9e56d7f11b245b|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|a86bc771fc54f6664f5813d353c2f3de78fb83f9cc42c5eda75bd22d2eeea78c|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|4cfbdfbf786e650928e65ac61671ba848ce9ade7d485ba2bc5b35f06d422f469|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|1b29d4a7ea9911cf53ac21bfe1628c99b715c02148fd80372c74ab006e5c019f|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|2a57543992637875546c127337a1de68c8c1e715cb5a07512b9852d32ba457a7|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|953ada612531dacc69c0d782d78580eab8fbcb3af383156c0b3e5eceede389cd|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|e9622cc9ca008909e4e0ee6a886d808dac4394a62ce2b2c288a213210fff0232|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|e23c799a2bf18b669ee25f1166ff924627857ac270bcba62b833b29666130481|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|ceeb93a38c9c6cd07a70685fe91b77299a175f94f508a2eae16baeb08b2aa2f7|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|3b96cb5360f564af80938ee90f4c7e25ea8dc1c99c27ab46c1fa8b1f26d8cb77|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|05efb8f2c0f0296501065f695ea49000e4e243e3f804fd485285ee8ce10e8b1e|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|93b2aa642ce5f30613d7e84d56b33cd65660a3c50848b63c9fa4265542fa1697|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|6ddc363781a5f0d52ff2c5d92f3205f6de56a187b413c57126409cc72bb40b6c|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|e0a0943ee9a1ed4719a6348fe9701f153bed72cf594e0cfff8aed66a0e5d4bf6|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|d91f2c4bcf3aff23a1e6287ae0327c14c8595d2047279eef6dd819db83a476f5|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|91241e3cf3ce194ffc80f85de6b3af62f1add8293f0ae9c3b6c90ab4323668c7|region.redish markup.deleted.sublime_linter markup.error.sublime_linter|32",
+										"SL.eslint.Highlights.|af714c98fac8fedaf0b7f631d6c46c26079a14a04cccc3698a97955bbe07d2e8|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|dee1adf8618c683fcc7865c3297acdbae3d5ff8514325ada98faf84dd2eb5381|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|f6b11a966b592a264e3cf0138c5dbbbbefdc1f5dfb601f2a1ee26ab47bec7611|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|bc1f1c14d821eb89c6496a836640f961fff954d7a57aaf3420189ac697f03ed6|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|af1c0f3418be6a6258cd187714dd72ed3f8937f655bfdfba5be9665306a3fce1|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|e80ff3b4df60aaac6e23ba6572c77acac065e705aa35afbe897febbb16b6cea2|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|c183c1e12dfe73338e60cc5426b1a158870877c7e2c71c1ca0fc2640aa514c34|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|85665d7401fad89ba1f4dbb76510dcff0352c8b40c86679a5a5d851e268dc159|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|54ad2f19eff0ddb1d9ec31dbf698ad3a207d7200bdb22e77546735d9f819277b|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|9a8bced6ae59725f39e66de1afb3255111171455bde35f522b7e0a2da75424e1|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|7549a9873e7015406bc8c5f7db8fd2690f086c915812f3fa705fabbe2cc7adf2|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|53b73c6e29b4547b7b73101465436dd76a27cc7b28d8d03c56ef91bdc8d552b7|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|ebeb274c88df2cb42afd25107c883cafaa07a750a097633448c94a67701b0fc4|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|265f73333976decf6ca5ed8c8c9e8f2f663e2ff4d8ea5cab64d4614b4cdd324d|region.redish markup.deleted.sublime_linter markup.error.sublime_linter|32",
+										"SL.eslint.Highlights.|281731c15f4bd592abbba94d10bec243c2cf20d829f15d7d6171936d130f6195|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|06683512f05c4b4c735edccaef11ec7acd5f4692f39c27d2d073a113b24c36c1|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|64d31012f601cedec4124ef0c8476f808932a7a068a02162842379ac6236abec|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|a411eb499299dee1f68fd7cf9238716e33896e021d59985458a670d5b1339961|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|a3545682a3c7f78ccd29686f46f5175953b6b3e5a2d33ae202e7881c2996887c|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|c3ef85c42f0e2df54d1e283bd24d0f2261e5534ee3b36373898efe0ab1bab35e|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|aa915db9a22b180fa3aa6defdeac9351e1fbff4e9c4a280472493e35fd45f72a|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|b58962d19d986b41c3fa898fa40fc50a352586e0ef1a46017b1d1cd93a7c8d94|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|a8d5d6e4ff6ab004339814bb43c99630507b89ef200efd96185e2fb3fe08f28d|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|9fc09eb1c300f49f6d6f2dd1661fca9c5700cb446f50cdc8ca8c8de621f56281|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|2bc7584c5cbd67a2bbf25a28bbd92c3080f9a259446c8acb4426f251ee9ad10c|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Gutter.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|dot",
+										"SL.eslint.Highlights.|d029bc7d89204c294fde0d04ba7a634f509f185f9a1773b9ca2f53d3e5d5c3f6|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|9bede54844ebcfbcc120076fda1413d0c3a5999048d336b2efbd25c382137aaa|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|9d3b91636fcaf7ca678244a3216aca48682e15a9fbc748fbeb07e2143880a84b|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|8815e54038cfd6156dd925d397869b6f1f63f0a4e6b392e2817a15bf482768f8|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|1bed06702e234c6564e7704490792a08363184a22b0d39ca7eacfee44e61464a|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|5adadc177f153990d4791169bb7f2eb39400ddb75d3215db8da0535ce5d51a31|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|3ab718848006b33720459b44d45e20971c21a8dd006722355389f0027e73e609|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|17b24e342b476c241cac3b9c86a8a7c87062227b8459973076aa98ca6c1df611|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|1eabd106de5afff676160351c0a0a3e733d1395746358a2023a67b361fe25cad|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|d4d9774fec077980bdd42a009c0a2d09decba4dd945bf79c6b9b0ecda0d9be4d|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|921ecf1b224eab02c1105c7f27005315ea92ed9b68a433a60d2ca98c74866acc|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|ce7be95b326ad290f60b7a40e01b883642e8b99f160dbf89a913c4e8b7d9c278|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|1ba3bdd193f385208e53d32ac43be14bba9b2abf6b819ed34d784278b8482050|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|ca58f7d2cba9733eae7fbf36fb497a910a99a99142d83e12bf3b32649a93cb0f|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|4985dd311b3cc8a525d9111e8448f982bc2d7f237f2c1206245bc898c3446fa6|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|5623e0319b6b3afafdc6071c7ff6503c80c6e6dbc4cebc58992c71bafec18bfd|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|8613154dce2f24e714712c189d0eca7f736a4e7a6eaadf2adb9d568cf73a9212|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|f5045756ed4c9d9ad42f7521eabcb703c80615825f44176d64f127393f86cc04|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|bb6924c2bef6c722bb296ec129b4feaa0e8e131cb25e049ce90ab0dc62d4c051|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|92a171e0ff6a27c6e8539f42f85e09fc07fc0b6372f0b0b56ffd8d8b7ef9336b|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|74e69055bc3ad1f074cd9bedabec66845c3834e5eecf7e5c33d9d5f7fe8b1828|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|d08b0679c4f2fe06d98900e70c382315e7174bb17a2a079ec92fb021ab89cf7e|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Gutter.|region.redish markup.deleted.sublime_linter markup.error.sublime_linter|dot",
+										"SL.eslint.Highlights.|18722beaff457e8b1114a44733a1028e1eacd29cda6fd29e9ec771acd6757a30|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|98f64f1dc36c87bd3a3a415d787e08dfd64293881f0002adc05fbce5ccdbd9fd|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32"
+									],
+									"SL.50.region_keys":
+									[
+									],
+									"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 1580.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 3,
+							"type": "text"
+						},
+						{
+							"buffer": 4,
+							"file": "/home/arsen/Documents/game-arena/frontend/src/types.js",
+							"semi_transient": true,
+							"settings":
+							{
+								"buffer_size": 142,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										0,
+										0
+									]
+								],
+								"settings":
+								{
+									"SL.62.region_keys":
+									[
+										"sublime_linter.protected_regions",
+										"SL.eslint.Highlights.|e7ebbbe0f94094b5646933a89ec644487a313e14f75b929df2e5dc5537602139|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Gutter.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|dot"
+									],
+									"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 5,
+							"type": "text"
+						},
+						{
+							"buffer": 5,
+							"file": "/home/arsen/Documents/game-arena/frontend/src/App.js",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 866,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										391,
+										391
+									]
+								],
+								"settings":
+								{
+									"SL.39.region_keys":
+									[
+										"SL.eslint.Highlights.|ee66ca0309a7bd19ddbb077a6da406df4b27e89042b16fafdc9d5747364fa6b7|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|43fd38a0a6f43273cb36ff075ea97cc428f9fddbe1aca4de26e16ac5ad4a7e89|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|016b604b4fc3bd1ffda8cbb296e5b03db399a2aa65628814d80427d0d2153cb9|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|13bfc097220b56b20332683a08c9bbe451143ff58bb7d67280ef7a0b165df006|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Gutter.|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|dot",
+										"SL.eslint.Highlights.|8068393c4ea9079230a333487ef11ec34c3ce673ef33501ee6d154fb528ac135|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|c93baf36f331411f5de6ec0b1eac21309ac7151133b91bbbbaa2789d08a23ea3|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|5b5ca503b6456a4c590a5b085234f984d838b14041fd4705ddc81b303ef56b23|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|044be30ed0c7f89482370feb9b779c6ecdb9010ebd72ec7dc521b2d5a2649a89|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"sublime_linter.protected_regions",
+										"SL.eslint.Highlights.|d1dbc1ab834f5bf6f4fd120d3f6544c569aa24b40ae494802ab1d24a77504b5e|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|c5d40e467c36f5d0f32ae95238e2116a1a691c40aaf98c25629dc06cc43daa3f|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32",
+										"SL.eslint.Highlights.|a0100583497f7840a5f52ea446bb102c9f56583da54a40c89cbbd432de1a497f|region.yellowish markup.changed.sublime_linter markup.warning.sublime_linter|32"
+									],
+									"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 0,
+							"type": "text"
+						},
+						{
+							"buffer": 6,
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 4201,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										4201,
+										4201
+									]
+								],
+								"settings":
+								{
+									"SL.60.region_keys":
+									[
+									],
+									"auto_indent": false,
+									"syntax": "Packages/Text/Plain text.tmLanguage",
+									"tab_width": 2,
+									"word_wrap": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 1312.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 6,
+							"type": "text"
+						}
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 28.0
+			},
+			"input":
+			{
+				"height": 46.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"output.SublimeLinter":
+			{
+				"height": 0.0
+			},
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "",
+			"position": "0,1,0,0,0,0,0,0,0,1600,900",
+			"project": "",
+			"replace":
+			{
+				"height": 52.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"selected_group": 0,
+			"settings":
+			{
+			},
+			"show_minimap": true,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			},
+			"window_id": 2,
+			"workspace_name": ""
+		}
+	],
+	"workspaces":
+	{
+		"recent_workspaces":
+		[
+		]
+	}
+}
